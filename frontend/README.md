@@ -1,27 +1,63 @@
-# Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.3.
+# ESGIHUB Frontend
 
-## Development server
+The **ESGIHUB Frontend** is the user interface for ESGIHUB, designed to provide an intuitive and modern experience for users interacting with the platform. It is developed using Angular and styled with Tailwind CSS.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+## 🚀 Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **User-Friendly Interface**: Clean and responsive design.
+- **Dynamic Functionality**: Seamless interaction with backend APIs.
+- **Modern Styling**: Styled using Tailwind CSS for consistency and flexibility.
+- **Error Handling**: Global HTTP interceptor for streamlined error handling.
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🛠️ Technologies
 
-## Running unit tests
+- **Framework**: Angular
+- **Styling**: Tailwind CSS
+- **Package Manager**: npm
+- **API Communication**: HttpClient
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+---
 
-## Running end-to-end tests
+## 📦 Installation
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Prerequisites
 
-## Further help
+Ensure you have the following installed:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Node.js (v16 or higher)
+- npm (v8 or higher)
+
+---
+
+### Steps
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/Mazene-ZERGUINE/ESGITHUB.git
+   ```
+
+2. Navigate to the frontend directory:
+
+   ```bash
+   cd frontend
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Start the development server:
+
+   ```bash
+   ng serve
+   ```
+
+   The application will then be accessible at `http://localhost:4200`. Make sure the backend is running before accessing the application.
