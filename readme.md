@@ -3,6 +3,8 @@
 ESGITHUB is a social media platform designed for software developers to share, test, and collaborate on programmes in various programming languages. The platform provides an integrated web-based real-time code editor, allowing users to test and execute their scripts before sharing them. It also offers file handling integrations for image processing and file transformations.
 
 To view more about the project presentation and technical architecture, [view the documentation](./docs/).
+
+To check project previews images [view the previews](./previews/).
 ## Key Features
 
 - **Authentication & Authorization**:
@@ -15,6 +17,7 @@ To view more about the project presentation and technical architecture, [view th
   - Support for multiple publishing modes: Public, Private, Followers-only.
   - Commenting and liking on posts.
   - Replying to comments and annotating specific parts of the code.
+  - Programmes versioning systeme
 - **Account Management**:
 
   - User profile management.

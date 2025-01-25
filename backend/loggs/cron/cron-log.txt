@@ -1,0 +1,4 @@
+2025-01-25T19:00:00.068Z - Cron job started
+2025-01-25T19:00:00.068Z - Cron job completed
+2025-01-25T19:00:00.070Z - Error reading directory /Users/mmazenezerguine/Documents/CV_PROJECTS/ESGIHUB/backend/uploads/code/input: Error: ENOENT: no such file or directory, scandir '/Users/mmazenezerguine/Documents/CV_PROJECTS/ESGIHUB/backend/uploads/code/input'
+2025-01-25T19:00:00.070Z - Error reading directory /Users/mmazenezerguine/Documents/CV_PROJECTS/ESGIHUB/backend/uploads/code/output: Error: ENOENT: no such file or directory, scandir '/Users/mmazenezerguine/Documents/CV_PROJECTS/ESGIHUB/backend/uploads/code/output'
