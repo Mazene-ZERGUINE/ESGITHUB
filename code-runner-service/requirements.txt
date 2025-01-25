@@ -1,0 +1,13 @@
+djangorestframework~=3.15.1
+celery~=5.4.0
+django-celery-results
+flower
+Django~=5.0.4
+pytest
+pytest-django
+pytest-celery
+boto3
+python-dotenv
+django-crontab
+psycopg2
+gunicorn

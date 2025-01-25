@@ -1,0 +1,14 @@
+pathlib
+PyPDF2
+reportlab
+pdfplumber
+pdf2image
+pandas
+PyYAML
+openpyxl
+jsonlib-python3
+XlsxWriter
+pyexcel-xlsx
+pillow
+setuptools==59.6.0
+requests==2.31.0

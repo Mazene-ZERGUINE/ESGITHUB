@@ -1,0 +1,20 @@
+{
+    "name": "vendor/data-manipulation",
+    "description": "A project to manipulate various file formats in PHP",
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "ext-json": "*",
+        "league/csv": "^9.7",
+        "symfony/yaml": "^6.0",
+        "phpoffice/phpspreadsheet": "^1.21",
+        "spatie/pdf-to-text": "^1.2",
+        "mpdf/mpdf": "^8.0",
+        "gumlet/php-image-resize": "^1.9",
+        "intervention/image": "^2.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
