@@ -1,0 +1,32 @@
+<a
+  class="flex items-center justify-between mt-5 mx-4 rounded-lg p-3 cursor-pointer"
+  [style.background-color]="'#' + customBgcolor"
+  [routerLink]="'/profile/' + following.following.userId"
+>
+  <div class="flex items-center">
+    <img
+      class="w-[54px] h-[54px] rounded-full object-cover me-5"
+      [ngClass]="{
+        'is-user-connected': isUserConnected,
+        'user-not-connected': !isUserConnected
+      }"
+      [src]="'http://' + following.following.avatarUrl ?? anonymousImageUrl"
+    />
+
+    <div>
+      <p class="text-white">{{ following.following.firstName }}</p>
+      <span class="text-[#707396]" *ngIf="!isUserConnected">
+        {{ timeElapsed }}
+      </span>
+      <span class="text-[#707396]" *ngIf="isUserConnected"> Online </span>
+    </div>
+  </div>
+
+  <button
+    *ngIf="isOwner"
+    (click)="onRemoveClick($event, following.relationId)"
+    class="bg-[#333333] py-1 rounded ml-2 mr-2"
+  >
+    <span class="py-2 px-3 font-medium text-white">Unfollow</span>
+  </button>
+</a>

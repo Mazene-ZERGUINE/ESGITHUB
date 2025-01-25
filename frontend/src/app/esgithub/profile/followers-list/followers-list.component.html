@@ -1,0 +1,41 @@
+<div *ngIf="followersList.followers as followingsData" class="overflow-hidden">
+  <div class="w-full rounded-md overflow-auto mt-4" *ngIf="followingsData.length > 0">
+    <div *ngFor="let follower of followersList.followers">
+      <!-- <div class="w-1/6 rounded-full">
+        <img
+          *ngIf="follower.follower.avatarUrl === null"
+          src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Circle-icons-profile.svg"
+          class="w-2/3 h-full object-cover rounded-full"
+          alt="Profile Image"
+        />
+        <img
+          *ngIf="follower.follower.avatarUrl !== null"
+          [src]="'http://' + follower.follower.avatarUrl"
+          class="w-2/3 h-full object-cover rounded-full"
+        />
+      </div>
+      <div class="text-xl text-white italic font-bold w-5/6 relative top-4">
+        {{ follower.follower.lastName | uppercase }} {{ follower.follower.firstName }}
+      </div>
+      <div class="text-xl text-white italic font-bold w-3/6 relative top-4">
+        <button
+          *ngIf="isOwner"
+          (click)="onRemoveClick(follower.relationId)"
+          class="bg-red-700 text-white font-bold py-2 rounded opacity-80 ml-2 w-full"
+        >
+          <i class="material-icons">remove_circle</i>
+          <span class="relative p-2 bottom-1.5 italic">Remove</span>
+        </button>
+      </div>
+    </div> -->
+      <app-follower [follower]="follower" [customBgcolor]="customBgColor"></app-follower>
+    </div>
+
+    <div
+      *ngIf="followingsData.length === 0"
+      class="w-full flex justify-center text-white items-center italic font-bold bg-[#424244] p-2 border rounded-md overflow-auto mt-4"
+    >
+      No followers found
+    </div>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<div
+  class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50"
+>
+  <div class="bg-[#212121] w-[700px] rounded-lg shadow-lg p-6 relative">
+    <button
+      class="absolute top-3 right-3 text-white hover:text-gray-800"
+      (click)="dialogRef.close()"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
+    <h1 class="text-2xl font-bold mb-4 text-white">User Manual</h1>
+
+    <h2 class="text-xl font-semibold mb-2 text-white">Description</h2>
+    <p class="mb-2 text-sm text-white">
+      This window allows you to execute code in multiple programming languages
+      (JavaScript, Python, C++, PHP) through your web browser. You can also use this
+      platform to perform file transformations.
+    </p>
+    <p class="mb-4 text-sm text-white">
+      To ensure your code works correctly, please follow the rules below:
+    </p>
+
+    <h2 class="text-xl font-semibold mb-2 text-white">Rules</h2>
+    <p class="mb-2 text-sm text-white">
+      1. You are limited to 5 files as input and output.
+    </p>
+    <p class="mb-2 text-sm text-white">
+      2. Use the global variables
+      <code class="bg-[#333333] p-1 rounded text-white">INPUT_FILE_PATH_(index)</code> and
+      <code class="bg-[#333333] p-1 rounded text-white">OUTPUT_FILE_PATH_(index)</code> to
+      access the selected file paths and generate output files.
+    </p>
+    <p class="mb-2 text-sm text-white">
+      3. Remember, global variable indices start at 0.
+    </p>
+    <p class="mb-2 text-sm text-white">
+      4. Select a file format to generate your output file correctly.
+    </p>
+    <p class="mb-4 text-sm text-white">
+      5. The order of input and output files during selection must match the order of
+      global variable indices in your code.
+    </p>
+
+    <h1 class="text-2xl font-bold mb-4 text-white">Example</h1>
+    <div class="bg-[#212121] rounded-lg p-4 text-xs italic overflow-auto">
+      <pre><code class="text-white">def generate_yml():
+    json_file = Path(INPUT_FILE_PATH_0)    # first selected file must be the json file
+    png_file = Path(INPUT_FILE_PATH_2)     # the png file must be the third one selected
+    yml_file = Path(OUTPUT_FILE_PATH_0)    # must be the first selected output format
+</code></pre>
+    </div>
+
+    <button
+      class="mt-4 bg-[#333333] text-white px-4 py-2 rounded"
+      (click)="dialogRef.close()"
+    >
+      Understood
+    </button>
+  </div>
+</div>

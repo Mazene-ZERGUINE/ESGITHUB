@@ -1,0 +1,123 @@
+<div class="bg-[#141414] mt-4 p-8 rounded-md">
+  <h1 class="text-2xl items-center font-bold flex justify-center text-white">
+    Edit profile
+  </h1>
+  <form [formGroup]="editProfileForm">
+    <p class="text-[#E2E2E2]">Email</p>
+    <mat-form-field
+      appearance="outline"
+      color="primary"
+      class="w-[100%] mat-form-field-compact"
+    >
+      <input matInput required formControlName="email" />
+    </mat-form-field>
+
+    <p class="text-[#E2E2E2]">First name</p>
+    <mat-form-field
+      appearance="outline"
+      color="primary"
+      class="w-[100%] mat-form-field-compact"
+    >
+      <input matInput required formControlName="firstName" />
+    </mat-form-field>
+
+    <p class="text-[#E2E2E2]">Last name</p>
+    <mat-form-field
+      appearance="outline"
+      color="primary"
+      class="w-[100%] mat-form-field-compact"
+    >
+      <input matInput required formControlName="lastName" />
+    </mat-form-field>
+
+    <p class="text-[#E2E2E2]">User name</p>
+    <mat-form-field
+      appearance="outline"
+      color="primary"
+      class="w-[100%] mat-form-field-compact"
+    >
+      <input matInput required formControlName="userName" />
+    </mat-form-field>
+
+    <p class="text-[#E2E2E2]">Bio</p>
+    <mat-form-field
+      appearance="outline"
+      color="primary"
+      class="w-full mat-form-field-compact"
+    >
+      <textarea matInput required formControlName="bio"></textarea>
+    </mat-form-field>
+
+    <div class="flex">
+      <button
+        (click)="this.profileUpdated.emit()"
+        type="button"
+        class="text-[#E2E2E2] bg-[#212121] mr-3 hover:bg-[#6C6C66] text-md p-4 w-full rounded-lg font-bold"
+      >
+        <span>Cancel</span>
+      </button>
+      <button
+        (click)="onEditAccountClick()"
+        type="button"
+        class="text-[#E2E2E2] bg-[#212121] hover:bg-[#6C6C66] text-md p-4 w-full rounded-lg font-bold"
+      >
+        <span>Edit</span>
+      </button>
+    </div>
+  </form>
+</div>
+
+<div class="bg-[#141414] mt-4 p-8 rounded-md">
+  <h1 class="text-2xl items-center font-bold flex justify-center text-white">
+    Edit password
+  </h1>
+
+  <form [formGroup]="editPasswordForm">
+    <p class="text-[#E2E2E2]">Current password</p>
+    <mat-form-field
+      appearance="outline"
+      color="primary"
+      class="w-[100%] mat-form-field-compact"
+    >
+      <input
+        matInput
+        formControlName="currentPassword"
+        type="password"
+        autocomplete="current-password"
+        required
+      />
+      <mat-error *ngIf="editPasswordForm.get('currentPassword')?.hasError('required')">
+        Current password is required
+      </mat-error>
+    </mat-form-field>
+
+    <p class="text-[#E2E2E2]">New password</p>
+    <mat-form-field
+      appearance="outline"
+      color="primary"
+      class="w-[100%] mat-form-field-compact"
+    >
+      <input
+        matInput
+        formControlName="newPassword"
+        type="password"
+        autocomplete="new-password"
+        required
+      />
+      <mat-error *ngIf="editPasswordForm.get('newPassword')?.hasError('required')">
+        New password is required
+      </mat-error>
+      <mat-error *ngIf="editPasswordForm.get('newPassword')?.hasError('minlength')">
+        New password must be at least 8 characters long
+      </mat-error>
+    </mat-form-field>
+
+    <button
+      (click)="onEditPasswordClick()"
+      type="button"
+      class="text-[#E2E2E2] bg-[#212121] hover:bg-[#6C6C66] text-md p-4 w-full rounded-lg font-bold"
+    >
+      <span>Edit</span>
+    </button>
+  </form>
+</div>

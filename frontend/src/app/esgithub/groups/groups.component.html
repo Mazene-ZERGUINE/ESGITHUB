@@ -1,0 +1,65 @@
+<div class="flex justify-between h-screen bg-[#212121]">
+  
+  <div class="overflow-auto w-full p-6 pt-10">
+    <app-search-program-input
+      class="flex justify-center"
+      [searchControl]="filtersOptionsForm.controls.searchQuery"
+    ></app-search-program-input>
+
+    <button
+      class="flex items-center text-white bg-[#141414] justify-center w-48 h-14 rounded-md"
+      (click)="onAddGroupClick()"
+    >
+      <span class="mr-3">
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 30 30"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect width="30" height="30" rx="4" fill="#333333" />
+          <path
+            d="M14.8714 6.99963C15.2896 6.99963 15.6286 7.41871 15.6286 7.75836V23.23C15.6286 23.6491 15.2896 23.9888 14.8714 23.9888C14.4532 23.9888 14.1143 23.5697 14.1143 23.23V7.75836C14.1143 7.33928 14.4532 6.99963 14.8714 6.99963Z"
+            fill="white"
+          />
+          <path
+            d="M6.37988 15.4946C6.37988 15.0764 6.79896 14.7374 7.13861 14.7374H22.6103C23.0294 14.7374 23.369 15.0764 23.369 15.4946C23.369 15.9127 22.9499 16.2517 22.6103 16.2517H7.13861C6.71953 16.2517 6.37988 15.9127 6.37988 15.4946Z"
+            fill="white"
+          />
+        </svg>
+      </span>
+      Create a group
+    </button>
+
+    <div>
+      <ng-container *ngIf="currentUserGroup$ | async as popularGroupsList">
+        <h1 class="text-white text-2xl my-8">My groups</h1>
+
+        <p *ngIf="popularGroupsList.length === 0" class="text-white mb-8">
+          No group found
+        </p>
+        <app-group-list-item
+          *ngIf="popularGroupsList.length > 0"
+          class="flex w-[980px] h-[540px] overflow-auto mb-6 min-w-full"
+          [groups]="popularGroupsList"
+        ></app-group-list-item>
+      </ng-container>
+    </div>
+    <div>
+      <ng-container *ngIf="groupsList$ | async as groupsList">
+        <h1 class="text-white text-2xl mb-8">All group</h1>
+        <p *ngIf="groupsList.length === 0" class="text-white">No group found</p>
+        <app-group-list-item
+          *ngIf="groupsList.length > 0"
+          class="flex w-[980px] h-[540px] overflow-auto min-w-full"
+          [groups]="groupsList"
+        ></app-group-list-item>
+      </ng-container>
+    </div>
+  </div>
+  <app-side-profile
+    *ngIf="userData$ | async as currentUser"
+    [currentUser]="currentUser"
+  ></app-side-profile>
+</div>

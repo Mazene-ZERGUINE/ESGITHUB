@@ -1,0 +1,45 @@
+<div class="bg-[#313234] flex flex-col items-center h-[100vh]">
+  <h1 class="text-white mt-[99px] text-6xl font-bold italic">ESGithub</h1>
+  <p *ngIf="isLogin" class="mt-[21px] text-2xl text-[#AAAAAA]">Sign in to your account</p>
+  <p *ngIf="!isLogin" class="mt-[21px] text-2xl text-[#AAAAAA]">Create your account</p>
+  <p class="text-[#6C6C6C] mt-[31px] mb-[54px]">Please enter your details</p>
+  <form
+    [formGroup]="authForm"
+    class="flex flex-col justify-center items-center w-[643px] rounded-lg h-auto p-16 bg-[#424244]"
+  >
+    <app-login
+      *ngIf="isLogin"
+      [isLogin]="isLogin"
+      [emailFormControl]="authForm.controls.email"
+      [passwordFormControl]="authForm.controls.password"
+    ></app-login>
+
+    <app-join *ngIf="!isLogin" [isLogin]="isLogin" [authForm]="authForm"></app-join>
+
+    <div class="text-[#6C6C6C] mb-[36px]">
+      <p *ngIf="isLogin">
+        Forgot your password?
+        <a href="#" class="underline">Click here.</a>
+      </p>
+      <span *ngIf="isLogin">New to Rs Code</span>
+      <span *ngIf="!isLogin">Already on Rs Code?</span>
+      <span class="underline cursor-pointer" (click)="onToggleSubmissionType()">
+        {{ isLogin ? 'Join us' : 'login' }}
+      </span>
+    </div>
+
+    <button
+      type="button"
+      [ngClass]="{
+        'bg-gray-400 cursor-not-allowed': !authForm.valid,
+        'bg-[#6C6C6C] hover:bg-[#6C6C66]': authForm.valid
+      }"
+      class="text-[#E2E2E2] bg-[#6C6C6C] hover:bg-[#6C6C66] text-xl py-[27px] w-[466px] rounded-lg font-bold"
+      (click)="onSubmit()"
+      [disabled]="!authForm.valid"
+    >
+      <span *ngIf="isLogin">Sign In</span>
+      <span *ngIf="!isLogin">Register</span>
+    </button>
+  </form>
+</div>

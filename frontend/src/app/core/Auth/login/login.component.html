@@ -1,0 +1,26 @@
+<div *ngIf="isLogin">
+  <div class="w-[466px]">
+    <p class="text-[#E2E2E2]">Email:</p>
+    <mat-form-field appearance="outline" class="w-[100%]">
+      <input
+        matInput
+        [formControl]="emailFormControl"
+        placeholder="ex: bouraz@..."
+        required
+      />
+    </mat-form-field>
+  </div>
+
+  <div class="w-[466px]">
+    <p class="text-[#E2E2E2]">Password:</p>
+    <mat-form-field appearance="outline" class="w-[100%]">
+      <input
+        matInput
+        [formControl]="passwordFormControl"
+        placeholder="************"
+        required
+        type="password"
+      />
+    </mat-form-field>
+  </div>
+</div>

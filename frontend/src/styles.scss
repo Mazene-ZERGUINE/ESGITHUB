@@ -1,0 +1,71 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.mat-mdc-snack-bar-container {
+  &.blue-snackbar {
+    --mdc-snackbar-container-color: #2196f3;
+    --mat-mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
+  }
+
+  &.success-snackbar {
+    --mdc-snackbar-container-color: #4caf50; /* Green */
+    --mat-mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
+  }
+
+  &.warning-snackbar {
+    --mdc-snackbar-container-color: #ffeb3b; /* Yellow */
+    --mat-mdc-snack-bar-button-color: #000;
+    --mdc-snackbar-supporting-text-color: #000;
+  }
+
+  &.error-snackbar {
+    --mdc-snackbar-container-color: #f44336; /* Red */
+    --mat-mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
+  }
+}
+
+/* Hide the browser's default checkbox */
+.checkbox-container input[type='checkbox'],
+.checkbox-container input[type='radio'] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 1.25rem;
+  width: 1.25rem;
+  border-radius: 2px;
+  border: 2px solid #6c6c6c;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-container input[type='checkbox']:checked ~ .checkmark,
+.checkbox-container input[type='radio']:checked ~ .checkmark {
+  box-shadow: inset 0 0 0 2px #212121; /* Adjust the shadow size to control the space */
+  background-color: #6c6c6c;
+}
+.is-user-connected,
+.user-not-connected {
+  border: 2px solid;
+  box-shadow: inset 0 0 0 2px #212121;
+}
+
+.is-user-connected {
+  border-color: #32af3f;
+}
+
+.user-not-connected {
+  border-color: #919191;
+}

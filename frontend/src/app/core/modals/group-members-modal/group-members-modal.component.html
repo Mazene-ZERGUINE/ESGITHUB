@@ -1,0 +1,32 @@
+<div class="h-[720px] bg-[#212121] overflow-auto relative">
+  <ng-container *ngIf="groupMembers$ | async; let groupMembers">
+    <div
+      *ngFor="let member of groupMembers"
+      class="flex items-center justify-between mt-5 mx-4 bg-[#141414] rounded-lg p-3 relative"
+    >
+      <p>
+        <a
+          class="flex items-center cursor-pointer"
+          (click)="onViewMemberClick(member.userId)"
+        >
+          <img
+            class="w-[54px] h-[54px] rounded-full object-cover me-5"
+            [src]="member.avatarUrl ? 'http://' + member.avatarUrl : anonymousImageUrl"
+          />
+          <div>
+            <p class="text-white">{{ member | userDisplayName }}</p>
+          </div>
+        </a>
+      </p>
+      <button
+        class="text-white bg-[#482424] rounded-sm border border-red-700 h-10 px-6"
+        (click)="onRemoveMemberClick(member.userId)"
+      >
+        Remove
+      </button>
+    </div>
+    <p class="text-white text-center" *ngIf="groupMembers.length === 0">
+      no group member found
+    </p>
+  </ng-container>
+</div>

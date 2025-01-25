@@ -1,0 +1,42 @@
+<div class="p-6 bg-[#212121] rounded-lg shadow-lg">
+  <h2 class="text-xl font-bold mb-4 text-white">Select File and Language</h2>
+
+  <div class="mb-4">
+    <label for="file" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+      >Select File</label
+    >
+    <input
+      type="file"
+      id="file"
+      (change)="onFileChange($event)"
+      class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+    />
+  </div>
+
+  <p class="text-md font-medium text-white mb-4">Select Language</p>
+  <div class="mb-4 grid grid-cols-4">
+    <label
+      *ngFor="let language of languages"
+      class="block relative pl-8 cursor-pointer items-center checkbox-container mb-3"
+    >
+      <input
+        type="radio"
+        [value]="language"
+        name="language"
+        [(ngModel)]="selectedLanguage"
+        class="form-radio h-4 w-4 text-indigo-600"
+      />
+      <span class="checkmark"></span>
+      <span class="text-white">{{ language }}</span>
+    </label>
+  </div>
+
+  <div class="flex justify-end space-x-2">
+    <button (click)="onCancel()" class="px-4 py-2 bg-[#9D3F3F] text-white rounded">
+      Cancel
+    </button>
+    <button (click)="onSubmit()" class="px-4 py-2 bg-[#333333] text-white rounded">
+      Submit
+    </button>
+  </div>
+</div>

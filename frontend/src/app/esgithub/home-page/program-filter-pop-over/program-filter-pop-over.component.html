@@ -1,0 +1,124 @@
+<button
+  (click)="handleClickOpenMoreOptionsOverlay()"
+  class="bg-[#333333] h-14 px-6 rounded-lg"
+  cdkOverlayOrigin
+  #overlayTrigger="cdkOverlayOrigin"
+>
+  <svg
+    [style.transform]="isFilterOpen ? 'rotate(90deg)' : 'rotate(0deg)'"
+    style="transition: transform 0.2s ease-out"
+    width="26"
+    height="28"
+    viewBox="0 0 26 28"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M12.6667 24.2083H1M24.3333 3.79166H19.9583M24.3333 24.2083H18.5M14.125 3.79166H1M5.375 14H1M24.3333 14L11.2083 14"
+      stroke="white"
+      stroke-width="1.5"
+      stroke-linecap="round"
+    />
+    <path
+      d="M18.5003 24.2083C18.5003 22.5975 17.1945 21.2917 15.5837 21.2917C13.9728 21.2917 12.667 22.5975 12.667 24.2083C12.667 25.8192 13.9728 27.125 15.5837 27.125C17.1945 27.125 18.5003 25.8192 18.5003 24.2083Z"
+      stroke="white"
+      stroke-width="1.5"
+      stroke-linecap="round"
+    />
+    <path
+      d="M11.2083 14C11.2083 12.3892 9.9025 11.0833 8.29167 11.0833C6.68084 11.0833 5.375 12.3892 5.375 14C5.375 15.6108 6.68084 16.9167 8.29167 16.9167C9.9025 16.9167 11.2083 15.6108 11.2083 14Z"
+      stroke="white"
+      stroke-width="1.5"
+      stroke-linecap="round"
+    />
+    <path
+      d="M19.9583 3.79166C19.9583 2.18083 18.6525 0.874995 17.0417 0.874995C15.4308 0.874995 14.125 2.18083 14.125 3.79166C14.125 5.40249 15.4308 6.70833 17.0417 6.70833C18.6525 6.70833 19.9583 5.40249 19.9583 3.79166Z"
+      stroke="white"
+      stroke-width="1.5"
+      stroke-linecap="round"
+    />
+  </svg>
+</button>
+
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="overlayTrigger"
+  [cdkConnectedOverlayOpen]="isFilterOpen"
+  [cdkConnectedOverlayHasBackdrop]="true"
+  [cdkConnectedOverlayBackdropClass]="'cdk-overlay-transparent-backdrop'"
+  [cdkConnectedOverlayPush]="true"
+  (backdropClick)="handleClickCloseMoreOptionsOverlay()"
+  [cdkConnectedOverlayDisableClose]="true"
+  (appKeyboardEscape)="isFilterOpen = false"
+>
+  <div class="w-[690px] bg-[#212121] h-[745px] rounded-2xl p-6 shadow-2xl">
+    <div class="flex justify-end pr-4">
+      <button class="text-[#6C6C6C]" (click)="handleResetFilters()">
+        Reset all filters
+      </button>
+    </div>
+
+    <div class="h-[2px] bg-[#333333] w-100 my-6"></div>
+
+    <p class="text-white mb-8 font-light">LANGAGE</p>
+    <div class="grid grid-cols-4">
+      <label
+        class="block relative pl-8 cursor-pointer items-center checkbox-container"
+        *ngFor="let availableLangage of AvailableLangages"
+      >
+        <input
+          type="checkbox"
+          [value]="availableLangage"
+          [name]="availableLangage"
+          class="w-4 h-4"
+          [checked]="availableLangagesControl.value?.includes(availableLangage)"
+          (change)="handleAvailableLangage(availableLangage)"
+        />
+        <span class="checkmark"></span>
+        <label class="flex items-center text-white">{{ availableLangage }}</label>
+      </label>
+    </div>
+
+    <div class="h-[2px] bg-[#333333] w-100 my-6"></div>
+
+    <p class="text-white mb-4 font-light">INPUT FILE</p>
+    <div class="grid grid-cols-4">
+      <label
+        class="block relative pl-8 mt-4 cursor-pointer items-center checkbox-container"
+        *ngFor="let fileType of FileTypes"
+      >
+        <input
+          type="checkbox"
+          [value]="fileType"
+          [name]="fileType"
+          class="w-4 h-4"
+          [checked]="inputFilesControl.value?.includes(fileType)"
+          (change)="handleInputFile(fileType)"
+        />
+        <span class="checkmark"></span>
+        <label class="flex items-center text-white">{{ fileType }}</label>
+      </label>
+    </div>
+
+    <div class="h-[2px] bg-[#333333] w-100 my-6"></div>
+
+    <p class="text-white mb-4 font-light">OUTPUT FILE</p>
+    <div class="grid grid-cols-4">
+      <label
+        class="block relative pl-8 mt-4 cursor-pointer items-center checkbox-container"
+        *ngFor="let fileType of FileTypes"
+      >
+        <input
+          type="checkbox"
+          [value]="fileType"
+          [name]="fileType"
+          class="w-4 h-4"
+          [checked]="outputFilesControl.value?.includes(fileType)"
+          (change)="handleOutputFile(fileType)"
+        />
+        <span class="checkmark"></span>
+        <label class="flex items-center text-white">{{ fileType }}</label>
+      </label>
+    </div>
+  </div>
+</ng-template>

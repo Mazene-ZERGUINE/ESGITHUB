@@ -1,0 +1,9 @@
+<div *ngFor="let program of programsList" class="mb-4 w-full">
+  <app-program-item-list
+    [program]="program"
+    [homePage]="false"
+    [isProfileOwner]="profileOwner"
+    [currentUser]="currentUser!"
+    (programHasBeenLiked)="userProgramHasBeenLiked.emit()"
+  ></app-program-item-list>
+</div>

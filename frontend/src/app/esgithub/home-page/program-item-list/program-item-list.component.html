@@ -1,0 +1,177 @@
+<!-- <div
+  class="relative p-4 rounded-lg mx-auto text-white mb-10 h-[320px]"
+  [ngStyle]="{ 'background-image': 'url(' + selectedBgImageUrl + ')' }"
+  [ngClass]="{ 'w-full': homePage === false, 'w-[90%]': homePage === true }"
+>
+  <div class="flex-col flex w-full h-[70%] top-[80%]">
+    <div class="flex flex-row ml-6 z-10">
+      <img
+        class="h-14 w-14 rounded-full"
+        *ngIf="program.programmingLanguage === 'javascript'"
+        src="assets/images/icons/javascript-svgrepo-com.svg"
+      />
+      <img
+        class="h-14 w-14 rounded-full"
+        *ngIf="program.programmingLanguage === 'python'"
+        src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg"
+      />
+      <img
+        class="h-14 w-14 rounded-full"
+        *ngIf="program.programmingLanguage === 'php'"
+        src="https://upload.wikimedia.org/wikipedia/commons/3/31/Webysther_20160423_-_Elephpant.svg"
+      />
+      <img
+        class="h-14 w-14 rounded-full"
+        *ngIf="program.programmingLanguage === 'c++'"
+        src="https://upload.wikimedia.org/wikipedia/commons/3/32/C%2B%2B_logo.png"
+      />
+
+      <h1 class="p-2 text-white text-3xl italic font-bold ml-4">
+        {{ program.programmingLanguage }}
+      </h1>
+    </div>
+
+    <div class="z-10 mt-4">
+      <div
+        class="h-[80px] w-[70%] overflow-auto z-10 ml-8 p-2 text-sm text-gray-500 border border-white border-opacity-20 rounded-lg"
+      >
+        {{ program.description }}
+      </div>
+
+      <div class="ml-8 z-10 mt-4">
+        <div class="flex flex-row z-10" *ngIf="program.inputTypes.length > 0">
+          <h1>Entry File/s:</h1>
+          <div
+            class="ml-2 p-0.5 w-16 text-center bg-green-400 rounded-lg z-10"
+            *ngFor="let file of program.inputTypes"
+          >
+            {{ file }}
+          </div>
+        </div>
+        <div class="flex flex-row z-10" *ngIf="program.inputTypes.length === 0">
+          <h1>Entry File/s:</h1>
+          <div class="ml-2 p-0.5 w-64 text-sm text-red-700">
+            this program has no entry files
+          </div>
+        </div>
+
+        <div class="flex flex-row z-10 mt-2" *ngIf="program.outputTypes.length > 0">
+          <h1>Exist File/s:</h1>
+          <div
+            class="ml-2 p-0.5 w-16 text-center bg-red-700 rounded-lg z-10"
+            *ngFor="let file of program.outputTypes"
+          >
+            {{ file }}
+          </div>
+        </div>
+        <div class="flex flex-row z-10 mt-2" *ngIf="program.outputTypes.length === 0">
+          <h1>Exit File/s:</h1>
+          <div class="ml-2 p-0.5 w-64 text-sm text-red-700">
+            this program has no exit files
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-row w-full absolute top-[80%] ml-4">
+      <div class="flex flex-row p-2 w-[27%]">
+        <img
+          class="h-8 w-8 z-10 rounded-full"
+          [src]="
+            program.user.avatarUrl
+              ? 'http://' + program.user.avatarUrl
+              : anonymousImageUrl
+          "
+        />
+        <h3
+          [routerLink]="['/profile', program.user.userId]"
+          class="p-2 ml-2 hover:text-purple-500 cursor-pointer text-white italic font-bold text-sm z-10"
+        >
+          {{ program.user.userName }}
+        </h3>
+      </div>
+
+      <div class="flex-row flex p-2 z-10">
+        <i
+          (click)="onLikeBtnClick()"
+          class="material-icons text-green-500 text-3xl font-bold cursor-pointer z-10"
+        >
+          {{
+            userReaction?.type === ReactionsEnum.LIKE
+              ? 'thumb_up_alt'
+              : 'thumb_up_off_alt'
+          }}
+        </i>
+        <h1 class="ml-2 mt-1.5 text-sm text-green-200 z-10">{{ likes$ | async }}</h1>
+      </div>
+      <div class="flex flex-row p-3 z-10">
+        <i
+          (click)="onDislikeBtnClick()"
+          class="material-icons text-red-500 text-3xl font-bold cursor-pointer z-10"
+        >
+          {{
+            userReaction?.type === ReactionsEnum.DISLIKE
+              ? 'thumb_down_alt'
+              : 'thumb_down_off_alt'
+          }}
+        </i>
+        <h1 class="ml-2 mt-1.5 text-sm text-red-200">{{ dislikes$ | async }}</h1>
+      </div>
+      <div class="flex flex-row p-3 z-10" *ngIf="!isProfileOwner">
+        <i
+          [routerLink]="['/program', program.programId]"
+          class="material-icons text-white text-3xl font-bold cursor-pointer z-10"
+        >
+          remove_red_eye
+        </i
+      </div>
+      <div class="flex flex-row p-3 z-10" *ngIf="isProfileOwner">
+        <i
+          [routerLink]="['/program/edit/', program.programId]"
+          class="material-icons text-white text-3xl font-bold cursor-pointer z-10"
+        >
+          edit
+        </i>
+      </div>
+      <div class="flex flex-row p-3 z-10" *ngIf="isProgramOwner || isGroupOwner">
+        <i
+          (click)="onDeleteBtnClick()"
+          class="material-icons text-red-700 text-3xl font-bold cursor-pointer z-10"
+        >
+          delete_outline
+        </i>
+      </div>
+    </div>
+  </div>
+
+  <div class="liner absolute inset-0"></div>
+</div> -->
+
+<div
+  [ngClass]="{
+    'bg-[#141414] block rounded-2xl mb-4 p-6': true
+  }"
+>
+  <app-program-header [programIcon]="program.programmingLanguage"></app-program-header>
+  <app-program-user
+    [userProgram]="program"
+    [isUserConnected]="isUserConnected"
+  ></app-program-user>
+
+  <div class="text-white my-7">
+    {{ program.description }}
+  </div>
+
+  <app-program-code [userProgram]="program"></app-program-code>
+
+  <app-program-inputs-outputs [userProgram]="program"></app-program-inputs-outputs>
+
+  <app-program-actions
+    [numberOfLikes]="(likes$ | async)!"
+    [userReaction]="userReaction?.type!"
+    [programId]="program.programId"
+    [programCommentCount]="(programCommentsCount$ | async)!"
+    (likeClickEvent)="onlikeProgram()"
+    [isProgramOwner]="isProfileOwner!"
+  ></app-program-actions>
+</div>

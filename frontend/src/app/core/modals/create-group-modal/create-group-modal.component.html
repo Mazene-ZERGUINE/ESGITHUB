@@ -1,0 +1,125 @@
+<div class="relative bg-[#212121] p-8">
+  <button
+    class="absolute top-10 right-4 text-gray-600 hover:text-gray-800"
+    (click)="onCloseBtnClick()"
+  >
+    <svg
+      width="25"
+      height="25"
+      viewBox="0 0 25 25"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g clip-path="url(#clip0_369_2034)">
+        <path
+          d="M13.4796 12.5L19.2366 6.74305C19.3503 6.6102 19.4098 6.43932 19.403 6.26454C19.3963 6.08977 19.3238 5.92398 19.2001 5.8003C19.0765 5.67662 18.9107 5.60417 18.7359 5.59742C18.5611 5.59067 18.3902 5.65012 18.2574 5.76389L12.5004 11.5208L6.7435 5.75694C6.61273 5.62618 6.43537 5.55271 6.25044 5.55271C6.06551 5.55271 5.88815 5.62618 5.75739 5.75694C5.62662 5.88771 5.55316 6.06507 5.55316 6.25C5.55316 6.43493 5.62662 6.61229 5.75739 6.74305L11.5213 12.5L5.75739 18.2569C5.68469 18.3192 5.62565 18.3958 5.58397 18.482C5.54228 18.5681 5.51886 18.662 5.51517 18.7576C5.51147 18.8532 5.52759 18.9486 5.5625 19.0377C5.59741 19.1268 5.65037 19.2078 5.71805 19.2754C5.78572 19.3431 5.86666 19.3961 5.95577 19.431C6.04489 19.4659 6.14026 19.482 6.2359 19.4783C6.33153 19.4746 6.42538 19.4512 6.51153 19.4095C6.59769 19.3678 6.6743 19.3088 6.73655 19.2361L12.5004 13.4792L18.2574 19.2361C18.3902 19.3499 18.5611 19.4093 18.7359 19.4026C18.9107 19.3958 19.0765 19.3234 19.2001 19.1997C19.3238 19.076 19.3963 18.9102 19.403 18.7355C19.4098 18.5607 19.3503 18.3898 19.2366 18.2569L13.4796 12.5Z"
+          fill="#F8F8F8"
+        />
+      </g>
+      <defs>
+        <g clip-path id="clip0_369_2034">
+          <rect width="25" height="25" fill="white" />
+        </g>
+      </defs>
+    </svg>
+  </button>
+
+  <h2 class="text-2xl font-bold text-center text-white mb-6">Create Your Group</h2>
+
+  <form [formGroup]="createGroupForm">
+    <div class="mb-4">
+      <label class="block text-white text-sm font-semibold mb-2" for="group-name"
+        >Group Name:</label
+      >
+      <input
+        formControlName="groupName"
+        id="group-name"
+        type="text"
+        placeholder="example: C++ for beginners"
+        class="w-full px-4 py-3 rounded-lg outline-none bg-[#333333] text-white"
+      />
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-white text-sm font-semibold mb-2" for="description"
+        >Description:</label
+      >
+      <textarea
+        formControlName="description"
+        id="description"
+        placeholder="example: group for clean code devs max(250)"
+        class="w-full px-3 h-[100px] outline-none bg-[#333333] py-2 text-white rounded-lg"
+      ></textarea>
+    </div>
+    <span class="block text-white text-sm font-semibold mb-6">Visibility:</span>
+
+    <div class="flex">
+      <label
+        class="block relative pl-8 cursor-pointer items-center checkbox-container mr-10 mb-10"
+      >
+        <input formControlName="visibility" id="private" type="radio" value="private" />
+        <span class="checkmark"></span>
+        <label for="private" class="text-white">Private</label>
+      </label>
+      <label class="block relative pl-8 cursor-pointer items-center checkbox-container">
+        <input formControlName="visibility" id="public" type="radio" value="public" />
+        <span class="checkmark"></span>
+        <label for="public" class="text-white">Public</label>
+      </label>
+    </div>
+
+    <h1
+      *ngIf="selectedImage"
+      class="bg-[#5D5D5D] text-gray-100 mb-4 rounded-full p-2 text-center"
+    >
+      {{ 'image selected:' + selectedImage.name }}
+    </h1>
+
+    <input
+      #inputFile
+      type="file"
+      id="fileInput"
+      accept="image/*"
+      class="hidden"
+      (change)="onFileSelected($event)"
+    />
+    <div class="mb-6">
+      <button
+        type="button"
+        (click)="inputFile.click()"
+        class="w-full flex items-center justify-center bg-[#333333] text-white py-3 rounded-lg"
+      >
+        <span class="mr-2">
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 30 30"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect width="30" height="30" rx="4" fill="#333333" />
+            <path
+              d="M14.9915 7C15.4097 7 15.7487 7.41908 15.7487 7.75873V23.2304C15.7487 23.6495 15.4097 23.9891 14.9915 23.9891C14.5734 23.9891 14.2344 23.5701 14.2344 23.2304V7.75873C14.2344 7.33965 14.5734 7 14.9915 7Z"
+              fill="white"
+            />
+            <path
+              d="M6.5 15.4949C6.5 15.0768 6.91908 14.7378 7.25873 14.7378H22.7304C23.1495 14.7378 23.4891 15.0768 23.4891 15.4949C23.4891 15.9131 23.0701 16.2521 22.7304 16.2521H7.25873C6.83965 16.2521 6.5 15.9131 6.5 15.4949Z"
+              fill="white"
+            />
+          </svg>
+        </span>
+        Select Group Image
+      </button>
+    </div>
+
+    <div class="mb-6">
+      <button
+        type="button"
+        (click)="onCreateButtonClick()"
+        class="w-full bg-[#333333] text-white py-3 rounded-lg"
+      >
+        Create
+      </button>
+    </div>
+  </form>
+</div>

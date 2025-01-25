@@ -1,0 +1,29 @@
+<div
+  class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50"
+  *ngIf="data"
+>
+  <div
+    class="relative bg-white border border-gray-500 p-4 rounded-lg w-[400px] h-[400px] overflow-auto"
+  >
+    <button
+      (click)="onCloseModal()"
+      class="absolute top-2 right-2 text-gray-500 hover:text-gray-900"
+    >
+      <i class="material-icons">close</i>
+    </button>
+
+    <div *ngIf="data.code === 0" class="h-full">
+      <div class="text-3xl">Code executed with success result:</div>
+      <textarea class="w-full h-[80%] text-green-700 p-2" readonly>
+        {{ data.stdout }}
+      </textarea>
+    </div>
+
+    <div *ngIf="data.code === 1" class="h-full">
+      <div class="text-3xl">Code executed with Error result:</div>
+      <textarea class="w-full h-[80%] text-red-700 p-2" readonly>
+        {{ data.stderr }}
+      </textarea>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<a
+  class="flex items-center mt-5 mx-4 rounded-lg p-3 cursor-pointer"
+  [style.background-color]="'#' + customBgcolor"
+  [routerLink]="'/profile/' + follower.follower.userId"
+>
+  <img
+    class="w-[54px] h-[54px] rounded-full object-cover me-5"
+    [ngClass]="{
+      'is-user-connected': isUserConnected,
+      'user-not-connected': !isUserConnected
+    }"
+    [src]="'http://' + follower.follower.avatarUrl ?? anonymousImageUrl"
+  />
+
+  <div>
+    <p class="text-white">{{ follower.follower.firstName }}</p>
+    <span class="text-[#707396]" *ngIf="!isUserConnected">
+      {{ timeElapsed }}
+    </span>
+    <span class="text-[#707396]" *ngIf="isUserConnected"> Online </span>
+  </div>
+</a>

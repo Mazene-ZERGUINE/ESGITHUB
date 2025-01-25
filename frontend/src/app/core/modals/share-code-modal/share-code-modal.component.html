@@ -1,0 +1,90 @@
+<div class="p-8 rounded-lg shadow-lg bg-[#212121]">
+  <div class="mb-4">
+    <label for="description" class="block text-md italic font-bold text-white mb-2"
+      >Description</label
+    >
+    <textarea
+      [(ngModel)]="description"
+      id="description"
+      rows="3"
+      class="mt-1 block w-full rounded-md bg-[#212121] text-white border border-zinc-600 p-3 outline-none"
+      placeholder="Enter your description here..."
+    ></textarea>
+  </div>
+
+  <div class="mb-4 p-4">
+    <label class="block text-md italic font-bold mb-2 text-white">Input Files</label>
+    <div class="mt-1 grid grid-cols-4">
+      <label
+        *ngFor="let type of inputFileTypeOptions; let i = index"
+        class="block relative pl-8 mt-4 cursor-pointer items-center checkbox-container"
+      >
+        <input
+          [ngClass]="{ 'ml-4': i !== 0 }"
+          type="checkbox"
+          class="form-checkbox h-5 w-5 text-white"
+          [(ngModel)]="type.checked"
+          name="inputType{{ i }}"
+        />
+        <span class="checkmark"></span>
+        <span class="ml-1 text-gray-500">{{ type.value }}</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="mb-4 p-4">
+    <label class="block text-md italic font-bold text-white mb-2">Output Files</label>
+    <div class="mt-1 grid grid-cols-4">
+      <label
+        *ngFor="let type of outputFileTypeOptions; let i = index"
+        class="block relative pl-8 mt-4 cursor-pointer items-center checkbox-container"
+      >
+        <input
+          [ngClass]="{ 'ml-4': i !== 0 }"
+          type="checkbox"
+          class="form-checkbox h-5 w-5 text-indigo-600"
+          [(ngModel)]="type.checked"
+          name="outputType{{ i }}"
+        />
+        <span class="checkmark"></span>
+        <span class="ml-1 text-gray-500">{{ type.value }}</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="mb-4 p-4">
+    <label class="block text-md italic font-bold mb-2 text-white">Visibility</label>
+    <div class="mt-2 grid grid-cols-4">
+      <label
+        *ngFor="let vis of visibilityOptions; let i = index"
+        class="block relative pl-8 mt-4 cursor-pointer items-center checkbox-container"
+      >
+        <input
+          [ngClass]="{ 'ml-4': i !== 0 }"
+          type="radio"
+          name="visibility"
+          class="form-radio"
+          [(ngModel)]="visibility"
+          [value]="vis.value"
+        />
+        <span class="checkmark"></span>
+        <span class="ml-1 text-gray-500">{{ vis.label }}</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="flex">
+    <button
+      (click)="shareCode()"
+      class="px-4 py-2 bg-[#333333] text-white rounded w-[50%] mr-2"
+    >
+      Share
+    </button>
+    <button
+      (click)="cancel()"
+      class="px-4 py-2 bg-[#9D3F3F] text-white rounded w-[50%] ml-2"
+    >
+      Cancel
+    </button>
+  </div>
+</div>

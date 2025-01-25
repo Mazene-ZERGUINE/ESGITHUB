@@ -1,0 +1,60 @@
+<div class="flex items-center mt-7">
+  <div>
+    <svg
+      width="35"
+      height="36"
+      viewBox="0 0 35 36"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M3.44186 32.5C3.19783 32.5 3 32.3022 3 32.0581V25.0291V21.5145V19.7573V18V14.4855V10.9709V3.94186C3 3.69783 3.19783 3.5 3.44186 3.5H13.5349H17.4462L24.0698 10.1235V18V32.0581C24.0698 32.3022 23.8719 32.5 23.6279 32.5H3.44186Z"
+        stroke="white"
+        stroke-width="2"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M15 21.5H33M33 21.5L30 18.5M33 21.5L30 24.5"
+        stroke="white"
+        stroke-width="2"
+        stroke-linecap="round"
+      />
+    </svg>
+  </div>
+  <div class="text-white ml-1">Output file(s) :</div>
+  <div *ngFor="let inputType of userProgram.outputTypes">
+    <div class="bg-[#8BBF82] w-[80px] text-center py-1 px-2 rounded-md ml-1">
+      {{ inputType }}
+    </div>
+  </div>
+</div>
+<div class="flex items-center mt-7">
+  <div class="ml-[-6px]">
+    <svg
+      width="35"
+      height="36"
+      viewBox="0 0 35 36"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M11.4375 32.5C11.1987 32.5 11 32.305 11 32.0581V25.0291V21.5145V19.7573V18V14.4855V10.9709V3.94186C11 3.69497 11.1987 3.5 11.4375 3.5H21.5H25.3974L32 10.1226V18V32.0581C32 32.305 31.8013 32.5 31.5625 32.5H11.4375Z"
+        stroke="white"
+        stroke-width="2"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M2 21.5H20M20 21.5L17 18.5M20 21.5L17 24.5"
+        stroke="white"
+        stroke-width="2"
+        stroke-linecap="round"
+      />
+    </svg>
+  </div>
+  <div class="text-white ml-1">Input file(s) :</div>
+  <div *ngFor="let inputType of userProgram.inputTypes">
+    <div class="bg-[#FFF493] w-[80px] text-center py-1 px-2 rounded-md ml-1">
+      {{ inputType }}
+    </div>
+  </div>
+</div>

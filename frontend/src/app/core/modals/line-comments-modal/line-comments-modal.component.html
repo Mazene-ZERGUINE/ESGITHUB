@@ -1,0 +1,104 @@
+<div class="flex items-center h-[700px] bg-[#212121] flex-col">
+  <span
+    class="p-4 absolute font-bold top-[0%] right-[0%] text-white text-5xl cursor-pointer"
+    (click)="onCloseBtnClick()"
+  >
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 18 18"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g clip-path="url(#clip0_566_5299)">
+        <path
+          d="M9.70547 9.00009L13.8505 4.85509C13.9324 4.75944 13.9752 4.6364 13.9703 4.51057C13.9655 4.38473 13.9133 4.26536 13.8243 4.17631C13.7352 4.08726 13.6158 4.0351 13.49 4.03024C13.3642 4.02538 13.2411 4.06818 13.1455 4.15009L9.00047 8.29509L4.85547 4.14509C4.76132 4.05094 4.63363 3.99805 4.50047 3.99805C4.36732 3.99805 4.23963 4.05094 4.14547 4.14509C4.05132 4.23924 3.99843 4.36694 3.99843 4.50009C3.99843 4.63324 4.05132 4.76094 4.14547 4.85509L8.29548 9.00009L4.14547 13.1451C4.09313 13.1899 4.05062 13.2451 4.02061 13.3071C3.9906 13.3691 3.97374 13.4367 3.97108 13.5056C3.96842 13.5744 3.98002 13.6431 4.00516 13.7073C4.03029 13.7714 4.06842 13.8297 4.11715 13.8784C4.16588 13.9271 4.22415 13.9653 4.28831 13.9904C4.35248 14.0155 4.42114 14.0272 4.49 14.0245C4.55886 14.0218 4.62643 14.005 4.68846 13.975C4.75049 13.9449 4.80565 13.9024 4.85047 13.8501L9.00047 9.70509L13.1455 13.8501C13.2411 13.932 13.3642 13.9748 13.49 13.9699C13.6158 13.9651 13.7352 13.9129 13.8243 13.8239C13.9133 13.7348 13.9655 13.6155 13.9703 13.4896C13.9752 13.3638 13.9324 13.2407 13.8505 13.1451L9.70547 9.00009Z"
+          fill="#6C6C6C"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_566_5299">
+          <rect width="18" height="18" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  </span>
+
+  <div class="mt-8 flex flex-col flex-1 w-[90%] relative overflow-y-auto mb-4">
+    <ng-container *ngFor="let comment of programComments">
+      <div class="second p-3 bg-[#141414] mb-4 rounded-xl">
+        <div class="flex flex-row">
+          <img
+            [src]="
+              comment.user.avatarUrl
+                ? 'http://' + comment.user.avatarUrl
+                : anonymousImageUrl
+            "
+            class="w-[30px] h-[30px] rounded-full"
+          />
+          <span class="text2 p-2 mb-1 text-white">{{ comment.user.firstName }}</span>
+          <span class="text-xs p-2 mb-1 text-white">{{
+            onFormatCommentAt(comment.createdAt)
+          }}</span>
+        </div>
+        <div class="relative flex-row flex justify-between">
+          <span class="text3 text-white">{{ comment.content }}</span>
+          <span
+            class="text2 mb-1 cursor-pointer px-4 py-1 border border-[#333333] rounded-md text-white justify-items-end relative mr-4"
+            (click)="onReplyClick(comment.commentId)"
+            >reply</span
+          >
+        </div>
+        <div *ngIf="replyingToCommentId === comment.commentId" class="mt-2 ml-4">
+          <input
+            [(ngModel)]="commentReplyFieldText"
+            placeholder="Write a reply..."
+            class="w-10/12 mt-2 rounded-md border border-[#6C6C6C] text-white outline-none bg-[#212121] p-2"
+          />
+          <button
+            (click)="onSubmitReply(comment.commentId)"
+            class="py-2 px-3 ml-1 border border-[#333333] rounded-lg text-white"
+          >
+            Submit Reply
+          </button>
+        </div>
+      </div>
+      <ng-container *ngFor="let reply of comment.replies">
+        <div class="second py-2 bg-[#141414] px-2 mb-4 ml-24">
+          <div class="flex flex-row">
+            <img
+              [src]="
+                reply.user.avatarUrl
+                  ? 'http://' + reply.user.avatarUrl
+                  : anonymousImageUrl
+              "
+              class="w-[30px] h-[30px] rounded-full"
+            />
+            <span class="text2 p-2 mb-1 text-white">{{ reply.user.userName }}</span>
+            <span class="text2 p-2 mb-1 text-white">{{
+              onFormatCommentAt(reply.createdAt)
+            }}</span>
+          </div>
+          <div class="relative flex-row flex justify-between">
+            <span class="text3 text-white">{{ reply.content }}</span>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+  <div class="flex justify-center mb-4 w-full">
+    <input
+      [(ngModel)]="commentFieldText"
+      placeholder="add a comment"
+      class="w-10/12 mr-2 rounded-lg border border-[#6C6C6C] text-white outline-none bg-[#212121] p-2"
+    />
+    <button
+      [disabled]="!commentFieldText || commentFieldText.trim().length === 0"
+      (click)="onCommentClick()"
+      (keydown.Enter)="onCommentClick()"
+      class="p-2 bg-[#333333] cursor-pointer rounded-lg text-white"
+    >
+      Comment
+    </button>
+  </div>
+</div>

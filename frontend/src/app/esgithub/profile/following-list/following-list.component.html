@@ -1,0 +1,48 @@
+<div *ngIf="followingsList?.followings as followingsData" class="overflow-hidden">
+  <div
+    class="w-full flex flex-col rounded-md overflow-auto mt-4"
+    *ngIf="followingsData.length > 0"
+  >
+    <div *ngFor="let followig of followingsList?.followings">
+      <!-- <div class="w-1/6 rounded-full">
+        <img
+          *ngIf="follower.following.avatarUrl === null"
+          src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Circle-icons-profile.svg"
+          class="w-2/3 h-full object-cover rounded-full"
+          alt="Profile Image"
+        />
+        <img
+          *ngIf="follower.following.avatarUrl !== null"
+          [src]="'http://' + follower.following.avatarUrl"
+          class="w-2/3 h-full object-cover rounded-full"
+        />
+      </div>
+      <div class="text-xl text-white italic font-bold w-5/6 relative top-4">
+        {{ follower.following.lastName | uppercase }} {{ follower.following.firstName }}
+      </div>
+      <div class="text-xl text-white italic font-bold w-1/6 relative top-4">
+        <button
+          *ngIf="isOwner"
+          (click)="onRemoveClick(follower.relationId)"
+          class="bg-red-700 text-white font-bold py-1 rounded opacity-80 ml-2 w-full mr-2"
+        >
+          <i class="material-icons">remove_circle</i>
+          <span class="relative p-1 bottom-1.5 italic">Remove</span>
+        </button>
+      </div>
+    </div> -->
+      <app-following
+        [following]="followig"
+        [customBgcolor]="customBgColor"
+        [isOwner]="isOwner"
+        (removeFollowerEvent)="onRemoveClick(followig.relationId)"
+      ></app-following>
+    </div>
+    <div
+      *ngIf="followingsData.length === 0"
+      class="w-full flex justify-center text-white items-center italic font-bold bg-[#424244] p-2 border rounded-md overflow-auto mt-4"
+    >
+      No followings found
+    </div>
+  </div>
+</div>
